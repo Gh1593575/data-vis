@@ -1,0 +1,151 @@
+respondent_id,tracks_workouts,training_days,mon_training,tue_training,wed_training,thu_training,fri_training,sat_training,sun_training,monthly_spend,favorite_protocol,fitness_rating,experience_level,gender,age
+1,Yes,5,Weightlifting,Weightlifting,Rest,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Rest,$51-$100,Active recovery (light jog),3,Intermediate,Male,22
+2,Yes,3-4,Endurance/Hyrox,Endurance/Hyrox,Rest,Mixed/CrossFit,Weightlifting,Weightlifting,Rest,$51-$100,High-carb meal and 8 hours sleep,4,Intermediate,Male,20
+3,No,5,Endurance/Hyrox,Rest,Boxing,Endurance/Hyrox,Weightlifting,Rest,Rest,$200+,Active recovery (light jog),4,Intermediate,Female,20
+4,Yes,3-4,Weightlifting,Mixed/CrossFit,Weightlifting,Weightlifting,Endurance/Hyrox,Rest,Mixed/CrossFit,$200+,Ice bath & mobility,3,Advanced,Female,21
+5,Yes,6+,Weightlifting,Weightlifting,Endurance/Hyrox,Weightlifting,Mixed/CrossFit,Rest,Boxing,$200+,Chocolate protein shake & stretching,5,Intermediate,Male,18
+6,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Boxing,Mixed/CrossFit,Boxing,Mixed/CrossFit,Rest,$0-$50,High-carb meal and 8 hours sleep,5,Intermediate,Female,18
+7,Yes,6+,Mixed/CrossFit,Mixed/CrossFit,Rest,Weightlifting,Rest,Mixed/CrossFit,Rest,$200+,Massage gun & foam rolling,4,Beginner,Female,22
+8,Yes,5,Boxing,Weightlifting,Weightlifting,Mixed/CrossFit,Weightlifting,Rest,Rest,$51-$100,Active recovery (light jog),3,Intermediate,Male,18
+9,Yes,5,Mixed/CrossFit,Weightlifting,Rest,Weightlifting,Boxing,Weightlifting,Weightlifting,$0-$50,Active recovery (light jog),2,Advanced,Male,20
+10,Yes,5,Weightlifting,Weightlifting,Weightlifting,Boxing,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,$0-$50,High-carb meal and 8 hours sleep,2,Intermediate,Male,18
+11,Yes,6+,Weightlifting,Boxing,Weightlifting,Rest,Weightlifting,Endurance/Hyrox,Weightlifting,$0-$50,Active recovery (light jog),3,Elite,Male,23
+12,Yes,5,Weightlifting,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Rest,$0-$50,Chocolate protein shake & stretching,5,Intermediate,Female,23
+13,Yes,5,Mixed/CrossFit,Weightlifting,Rest,Boxing,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,$101-$200,Active recovery (light jog),2,Beginner,Female,19
+14,No,3-4,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Weightlifting,Rest,Mixed/CrossFit,$0-$50,Creatine + full rest,4,Intermediate,Male,23
+15,No,5,Mixed/CrossFit,Rest,Rest,Mixed/CrossFit,Mixed/CrossFit,Rest,Rest,$101-$200,Chocolate protein shake & stretching,2,Intermediate,Male,22
+16,Yes,5,Boxing,Weightlifting,Rest,Endurance/Hyrox,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,$101-$200,Chocolate protein shake & stretching,5,Intermediate,Male,21
+17,Yes,6+,Weightlifting,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Rest,$0-$50,Active recovery (light jog),2,Intermediate,Female,18
+18,Yes,1-2,Boxing,Endurance/Hyrox,Rest,Mixed/CrossFit,Mixed/CrossFit,Boxing,Rest,$51-$100,Massage gun & foam rolling,4,Elite,Female,19
+19,No,3-4,Weightlifting,Endurance/Hyrox,Boxing,Mixed/CrossFit,Endurance/Hyrox,Rest,Weightlifting,$51-$100,Ice bath & mobility,4,Intermediate,Female,18
+20,Yes,5,Mixed/CrossFit,Weightlifting,Rest,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Boxing,$51-$100,Chocolate protein shake & stretching,5,Advanced,Female,18
+21,No,3-4,Weightlifting,Rest,Endurance/Hyrox,Rest,Endurance/Hyrox,Endurance/Hyrox,Rest,$51-$100,Ice bath & mobility,3,Intermediate,Male,23
+22,Yes,5,Weightlifting,Mixed/CrossFit,Rest,Boxing,Endurance/Hyrox,Mixed/CrossFit,Rest,$51-$100,Creatine + full rest,4,Beginner,Male,22
+23,Yes,5,Weightlifting,Weightlifting,Rest,Endurance/Hyrox,Mixed/CrossFit,Rest,Boxing,$101-$200,Ice bath & mobility,5,Intermediate,Female,20
+24,Yes,3-4,Boxing,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,Rest,$0-$50,High-carb meal and 8 hours sleep,2,Intermediate,Male,19
+25,No,3-4,Rest,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,Rest,$51-$100,Massage gun & foam rolling,5,Beginner,Male,20
+26,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Rest,Rest,Mixed/CrossFit,Rest,Rest,$101-$200,Active recovery (light jog),5,Intermediate,Female,19
+27,No,5,Mixed/CrossFit,Mixed/CrossFit,Rest,Weightlifting,Weightlifting,Endurance/Hyrox,Rest,$51-$100,Creatine + full rest,4,Beginner,Male,21
+28,No,1-2,Mixed/CrossFit,Weightlifting,Rest,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,$0-$50,Massage gun & foam rolling,2,Intermediate,Male,20
+29,Yes,3-4,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,$101-$200,Chocolate protein shake & stretching,3,Advanced,Male,25
+30,No,3-4,Mixed/CrossFit,Weightlifting,Rest,Boxing,Rest,Endurance/Hyrox,Boxing,$200+,Active recovery (light jog),4,Intermediate,Male,25
+31,Yes,3-4,Boxing,Mixed/CrossFit,Rest,Boxing,Boxing,Boxing,Rest,$101-$200,Massage gun & foam rolling,4,Advanced,Prefer not to say,21
+32,Yes,6+,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Weightlifting,Weightlifting,Mixed/CrossFit,Rest,$0-$50,Massage gun & foam rolling,3,Elite,Male,18
+33,No,6+,Mixed/CrossFit,Weightlifting,Rest,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Boxing,$101-$200,High-carb meal and 8 hours sleep,4,Intermediate,Male,23
+34,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Endurance/Hyrox,Rest,$0-$50,Chocolate protein shake & stretching,3,Intermediate,Female,19
+35,Yes,1-2,Boxing,Boxing,Rest,Mixed/CrossFit,Rest,Rest,Rest,$101-$200,Chocolate protein shake & stretching,2,Intermediate,Male,21
+36,Yes,6+,Boxing,Rest,Weightlifting,Weightlifting,Weightlifting,Rest,Weightlifting,$200+,Ice bath & mobility,5,Intermediate,Male,21
+37,Yes,6+,Mixed/CrossFit,Weightlifting,Boxing,Mixed/CrossFit,Boxing,Mixed/CrossFit,Weightlifting,$51-$100,Ice bath & mobility,5,Advanced,Female,21
+38,Yes,5,Mixed/CrossFit,Endurance/Hyrox,Boxing,Weightlifting,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,$0-$50,Massage gun & foam rolling,2,Intermediate,Male,25
+39,No,6+,Boxing,Boxing,Endurance/Hyrox,Mixed/CrossFit,Boxing,Mixed/CrossFit,Rest,$51-$100,Chocolate protein shake & stretching,3,Intermediate,Male,20
+40,Yes,6+,Mixed/CrossFit,Rest,Rest,Rest,Endurance/Hyrox,Endurance/Hyrox,Mixed/CrossFit,$51-$100,Active recovery (light jog),2,Intermediate,Female,20
+41,Yes,1-2,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Weightlifting,Rest,Rest,$51-$100,Ice bath & mobility,3,Intermediate,Male,20
+42,Yes,5,Endurance/Hyrox,Boxing,Rest,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Rest,$0-$50,Ice bath & mobility,2,Intermediate,Male,23
+43,Yes,5,Weightlifting,Rest,Rest,Weightlifting,Weightlifting,Rest,Weightlifting,$200+,Active recovery (light jog),5,Intermediate,Female,20
+44,Yes,6+,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Weightlifting,Weightlifting,Rest,Rest,$0-$50,Chocolate protein shake & stretching,5,Intermediate,Male,22
+45,Yes,5,Mixed/CrossFit,Rest,Mixed/CrossFit,Boxing,Rest,Weightlifting,Mixed/CrossFit,$0-$50,Creatine + full rest,2,Elite,Male,25
+46,No,3-4,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Rest,Weightlifting,Rest,Weightlifting,$101-$200,High-carb meal and 8 hours sleep,4,Intermediate,Male,21
+47,Yes,3-4,Weightlifting,Rest,Weightlifting,Weightlifting,Weightlifting,Rest,Mixed/CrossFit,$200+,Chocolate protein shake & stretching,5,Intermediate,Female,24
+48,Yes,5,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,$200+,Ice bath & mobility,4,Intermediate,Prefer not to say,18
+49,Yes,3-4,Weightlifting,Weightlifting,Rest,Weightlifting,Weightlifting,Mixed/CrossFit,Rest,$101-$200,Massage gun & foam rolling,5,Elite,Female,18
+50,Yes,6+,Rest,Boxing,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Rest,$51-$100,Creatine + full rest,2,Advanced,Male,22
+51,Yes,3-4,Weightlifting,Mixed/CrossFit,Rest,Endurance/Hyrox,Weightlifting,Endurance/Hyrox,Rest,$0-$50,High-carb meal and 8 hours sleep,3,Intermediate,Male,19
+52,Yes,3-4,Mixed/CrossFit,Rest,Rest,Rest,Weightlifting,Endurance/Hyrox,Weightlifting,$101-$200,High-carb meal and 8 hours sleep,4,Advanced,Female,18
+53,Yes,3-4,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Weightlifting,Rest,$0-$50,Massage gun & foam rolling,2,Intermediate,Female,21
+54,No,3-4,Endurance/Hyrox,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Rest,$101-$200,Chocolate protein shake & stretching,2,Intermediate,Male,21
+55,Yes,5,Endurance/Hyrox,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Rest,$51-$100,Creatine + full rest,5,Elite,Female,19
+56,Yes,5,Weightlifting,Weightlifting,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Rest,Rest,$101-$200,Active recovery (light jog),2,Beginner,Male,21
+57,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Weightlifting,Endurance/Hyrox,Rest,$51-$100,High-carb meal and 8 hours sleep,3,Intermediate,Male,19
+58,No,3-4,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Rest,Mixed/CrossFit,Boxing,Rest,$200+,Massage gun & foam rolling,5,Beginner,Female,21
+59,Yes,3-4,Weightlifting,Mixed/CrossFit,Boxing,Weightlifting,Weightlifting,Rest,Rest,$101-$200,Chocolate protein shake & stretching,2,Advanced,Male,19
+60,Yes,3-4,Rest,Weightlifting,Mixed/CrossFit,Rest,Weightlifting,Endurance/Hyrox,Rest,$101-$200,High-carb meal and 8 hours sleep,3,Intermediate,Male,24
+61,Yes,6+,Weightlifting,Endurance/Hyrox,Rest,Rest,Weightlifting,Mixed/CrossFit,Rest,$51-$100,Active recovery (light jog),3,Intermediate,Male,21
+62,No,3-4,Endurance/Hyrox,Rest,Boxing,Endurance/Hyrox,Endurance/Hyrox,Rest,Endurance/Hyrox,$101-$200,Creatine + full rest,3,Intermediate,Male,22
+63,Yes,3-4,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Rest,$0-$50,Massage gun & foam rolling,4,Advanced,Male,20
+64,Yes,5,Endurance/Hyrox,Rest,Rest,Mixed/CrossFit,Mixed/CrossFit,Rest,Rest,$200+,Creatine + full rest,4,Beginner,Male,19
+65,Yes,3-4,Rest,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,$0-$50,High-carb meal and 8 hours sleep,4,Intermediate,Male,19
+66,Yes,5,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Boxing,Weightlifting,$101-$200,Ice bath & mobility,4,Intermediate,Female,22
+67,Yes,5,Endurance/Hyrox,Weightlifting,Boxing,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Rest,$51-$100,Chocolate protein shake & stretching,3,Beginner,Male,22
+68,Yes,5,Weightlifting,Weightlifting,Mixed/CrossFit,Boxing,Endurance/Hyrox,Rest,Rest,$101-$200,High-carb meal and 8 hours sleep,3,Intermediate,Female,18
+69,Yes,5,Mixed/CrossFit,Weightlifting,Rest,Weightlifting,Weightlifting,Mixed/CrossFit,Rest,$0-$50,Chocolate protein shake & stretching,2,Beginner,Female,19
+70,Yes,3-4,Endurance/Hyrox,Rest,Rest,Mixed/CrossFit,Rest,Endurance/Hyrox,Rest,$0-$50,Creatine + full rest,5,Intermediate,Female,20
+71,No,3-4,Boxing,Weightlifting,Weightlifting,Weightlifting,Endurance/Hyrox,Rest,Mixed/CrossFit,$0-$50,High-carb meal and 8 hours sleep,4,Intermediate,Male,22
+72,Yes,3-4,Rest,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,Mixed/CrossFit,$0-$50,Active recovery (light jog),5,Elite,Male,24
+73,No,6+,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Rest,Boxing,Mixed/CrossFit,Weightlifting,$0-$50,Massage gun & foam rolling,3,Intermediate,Prefer not to say,20
+74,No,5,Mixed/CrossFit,Rest,Endurance/Hyrox,Rest,Endurance/Hyrox,Boxing,Rest,$51-$100,Ice bath & mobility,4,Beginner,Female,19
+75,No,6+,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Rest,Rest,$101-$200,Active recovery (light jog),5,Intermediate,Female,22
+76,Yes,5,Endurance/Hyrox,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Rest,$0-$50,Ice bath & mobility,5,Intermediate,Male,20
+77,No,5,Boxing,Weightlifting,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Mixed/CrossFit,$101-$200,Chocolate protein shake & stretching,3,Beginner,Male,21
+78,Yes,5,Rest,Endurance/Hyrox,Rest,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Rest,$0-$50,High-carb meal and 8 hours sleep,4,Intermediate,Male,23
+79,No,5,Rest,Endurance/Hyrox,Mixed/CrossFit,Boxing,Endurance/Hyrox,Endurance/Hyrox,Rest,$200+,Active recovery (light jog),4,Intermediate,Female,18
+80,Yes,6+,Weightlifting,Rest,Weightlifting,Rest,Boxing,Mixed/CrossFit,Mixed/CrossFit,$51-$100,Chocolate protein shake & stretching,2,Advanced,Prefer not to say,22
+81,Yes,5,Weightlifting,Mixed/CrossFit,Rest,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,Rest,$51-$100,Creatine + full rest,2,Intermediate,Male,20
+82,Yes,1-2,Mixed/CrossFit,Rest,Weightlifting,Boxing,Mixed/CrossFit,Weightlifting,Rest,$51-$100,Creatine + full rest,2,Beginner,Male,18
+83,Yes,5,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Weightlifting,Rest,$200+,Chocolate protein shake & stretching,2,Advanced,Female,23
+84,Yes,5,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Rest,Mixed/CrossFit,Rest,$101-$200,Massage gun & foam rolling,3,Advanced,Male,21
+85,Yes,3-4,Rest,Weightlifting,Endurance/Hyrox,Weightlifting,Weightlifting,Rest,Mixed/CrossFit,$200+,High-carb meal and 8 hours sleep,4,Advanced,Male,24
+86,No,3-4,Mixed/CrossFit,Boxing,Rest,Boxing,Mixed/CrossFit,Rest,Rest,$0-$50,Active recovery (light jog),3,Advanced,Male,21
+87,Yes,5,Weightlifting,Rest,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Weightlifting,Rest,$51-$100,High-carb meal and 8 hours sleep,3,Elite,Male,19
+88,Yes,3-4,Mixed/CrossFit,Mixed/CrossFit,Rest,Rest,Mixed/CrossFit,Endurance/Hyrox,Rest,$0-$50,High-carb meal and 8 hours sleep,5,Beginner,Female,25
+89,Yes,5,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Rest,$200+,High-carb meal and 8 hours sleep,2,Advanced,Female,18
+90,Yes,6+,Mixed/CrossFit,Mixed/CrossFit,Rest,Rest,Boxing,Endurance/Hyrox,Endurance/Hyrox,$0-$50,High-carb meal and 8 hours sleep,3,Intermediate,Female,19
+91,Yes,3-4,Mixed/CrossFit,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,Boxing,Rest,Rest,$51-$100,Ice bath & mobility,3,Elite,Female,21
+92,Yes,5,Boxing,Boxing,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Rest,Rest,$101-$200,High-carb meal and 8 hours sleep,3,Intermediate,Male,18
+93,No,3-4,Mixed/CrossFit,Weightlifting,Weightlifting,Boxing,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,$51-$100,Active recovery (light jog),2,Elite,Male,21
+94,No,5,Mixed/CrossFit,Mixed/CrossFit,Rest,Boxing,Boxing,Endurance/Hyrox,Endurance/Hyrox,$101-$200,Creatine + full rest,4,Beginner,Female,19
+95,Yes,5,Endurance/Hyrox,Mixed/CrossFit,Rest,Rest,Weightlifting,Rest,Mixed/CrossFit,$51-$100,Creatine + full rest,4,Intermediate,Female,24
+96,No,5,Rest,Weightlifting,Rest,Mixed/CrossFit,Weightlifting,Endurance/Hyrox,Rest,$200+,Ice bath & mobility,4,Intermediate,Male,21
+97,Yes,5,Endurance/Hyrox,Weightlifting,Weightlifting,Boxing,Rest,Mixed/CrossFit,Rest,$200+,Ice bath & mobility,2,Intermediate,Female,23
+98,Yes,5,Mixed/CrossFit,Boxing,Rest,Weightlifting,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,$0-$50,Creatine + full rest,3,Advanced,Female,20
+99,No,3-4,Mixed/CrossFit,Endurance/Hyrox,Rest,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Rest,$51-$100,High-carb meal and 8 hours sleep,2,Intermediate,Prefer not to say,19
+100,Yes,5,Weightlifting,Mixed/CrossFit,Rest,Boxing,Endurance/Hyrox,Weightlifting,Rest,$51-$100,Ice bath & mobility,2,Intermediate,Female,19
+101,Yes,5,Weightlifting,Weightlifting,Rest,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,$200+,Active recovery (light jog),4,Advanced,Male,18
+102,Yes,3-4,Rest,Endurance/Hyrox,Boxing,Rest,Weightlifting,Endurance/Hyrox,Boxing,$0-$50,Chocolate protein shake & stretching,2,Intermediate,Female,19
+103,Yes,1-2,Weightlifting,Boxing,Endurance/Hyrox,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,Rest,$101-$200,High-carb meal and 8 hours sleep,2,Beginner,Female,19
+104,Yes,3-4,Weightlifting,Mixed/CrossFit,Rest,Weightlifting,Boxing,Weightlifting,Weightlifting,$101-$200,Ice bath & mobility,4,Intermediate,Male,18
+105,Yes,1-2,Boxing,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,$51-$100,High-carb meal and 8 hours sleep,5,Beginner,Female,23
+106,Yes,6+,Boxing,Mixed/CrossFit,Rest,Weightlifting,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,$200+,High-carb meal and 8 hours sleep,4,Advanced,Female,21
+107,No,3-4,Endurance/Hyrox,Rest,Weightlifting,Weightlifting,Weightlifting,Endurance/Hyrox,Rest,$0-$50,Chocolate protein shake & stretching,2,Intermediate,Male,20
+108,Yes,5,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Boxing,Mixed/CrossFit,$200+,Massage gun & foam rolling,2,Intermediate,Male,24
+109,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Boxing,Rest,Rest,Rest,$101-$200,Massage gun & foam rolling,5,Elite,Female,24
+110,Yes,3-4,Endurance/Hyrox,Weightlifting,Rest,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Boxing,$200+,Creatine + full rest,5,Intermediate,Female,18
+111,Yes,3-4,Weightlifting,Mixed/CrossFit,Rest,Endurance/Hyrox,Mixed/CrossFit,Rest,Rest,$51-$100,Active recovery (light jog),5,Intermediate,Female,18
+112,Yes,1-2,Mixed/CrossFit,Boxing,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Rest,$51-$100,Ice bath & mobility,2,Advanced,Female,23
+113,Yes,3-4,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Rest,Mixed/CrossFit,Endurance/Hyrox,Rest,$101-$200,Chocolate protein shake & stretching,4,Advanced,Male,18
+114,Yes,3-4,Weightlifting,Weightlifting,Rest,Mixed/CrossFit,Weightlifting,Endurance/Hyrox,Rest,$0-$50,Ice bath & mobility,5,Beginner,Female,19
+115,Yes,5,Boxing,Weightlifting,Rest,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,Rest,$200+,Massage gun & foam rolling,2,Intermediate,Male,18
+116,Yes,3-4,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Rest,Endurance/Hyrox,Rest,$200+,Ice bath & mobility,4,Intermediate,Male,18
+117,No,5,Endurance/Hyrox,Mixed/CrossFit,Weightlifting,Rest,Endurance/Hyrox,Boxing,Rest,$101-$200,Chocolate protein shake & stretching,4,Intermediate,Male,24
+118,Yes,5,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Boxing,Weightlifting,Endurance/Hyrox,Rest,$0-$50,Active recovery (light jog),5,Advanced,Male,18
+119,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,Rest,Rest,Rest,$0-$50,Ice bath & mobility,2,Beginner,Female,19
+120,Yes,3-4,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Boxing,Endurance/Hyrox,Boxing,$0-$50,Active recovery (light jog),3,Intermediate,Male,21
+121,Yes,5,Mixed/CrossFit,Weightlifting,Rest,Mixed/CrossFit,Weightlifting,Rest,Rest,$101-$200,Ice bath & mobility,3,Elite,Female,26
+122,No,3-4,Mixed/CrossFit,Boxing,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Rest,Rest,$0-$50,High-carb meal and 8 hours sleep,2,Intermediate,Male,22
+123,Yes,3-4,Mixed/CrossFit,Weightlifting,Endurance/Hyrox,Boxing,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,$200+,Massage gun & foam rolling,4,Intermediate,Female,23
+124,Yes,3-4,Mixed/CrossFit,Endurance/Hyrox,Rest,Boxing,Rest,Endurance/Hyrox,Boxing,$101-$200,Chocolate protein shake & stretching,4,Beginner,Female,18
+125,Yes,5,Mixed/CrossFit,Weightlifting,Rest,Weightlifting,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,$51-$100,Massage gun & foam rolling,5,Intermediate,Female,19
+126,Yes,5,Endurance/Hyrox,Weightlifting,Weightlifting,Boxing,Weightlifting,Rest,Rest,$51-$100,Massage gun & foam rolling,3,Intermediate,Male,19
+127,No,5,Weightlifting,Rest,Rest,Weightlifting,Weightlifting,Endurance/Hyrox,Rest,$200+,Massage gun & foam rolling,3,Beginner,Female,18
+128,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Boxing,Rest,Rest,$200+,Chocolate protein shake & stretching,2,Intermediate,Male,23
+129,Yes,6+,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Rest,$200+,Massage gun & foam rolling,4,Beginner,Prefer not to say,22
+130,Yes,1-2,Rest,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Weightlifting,Rest,Rest,$200+,Ice bath & mobility,4,Intermediate,Male,19
+131,Yes,3-4,Rest,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Rest,Rest,Boxing,$101-$200,Chocolate protein shake & stretching,2,Intermediate,Male,22
+132,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Rest,Boxing,Mixed/CrossFit,Rest,$200+,Ice bath & mobility,3,Intermediate,Female,23
+133,Yes,1-2,Weightlifting,Endurance/Hyrox,Rest,Weightlifting,Endurance/Hyrox,Endurance/Hyrox,Rest,$200+,High-carb meal and 8 hours sleep,5,Beginner,Male,26
+134,No,5,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Boxing,Weightlifting,Endurance/Hyrox,$0-$50,High-carb meal and 8 hours sleep,5,Advanced,Female,22
+135,Yes,5,Mixed/CrossFit,Weightlifting,Endurance/Hyrox,Rest,Boxing,Endurance/Hyrox,Rest,$200+,Massage gun & foam rolling,3,Intermediate,Female,23
+136,Yes,3-4,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Rest,Rest,$200+,Chocolate protein shake & stretching,5,Advanced,Prefer not to say,19
+137,No,3-4,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Weightlifting,Weightlifting,Mixed/CrossFit,Rest,$51-$100,Ice bath & mobility,3,Advanced,Female,20
+138,Yes,5,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Mixed/CrossFit,Endurance/Hyrox,Endurance/Hyrox,Rest,$101-$200,Massage gun & foam rolling,5,Advanced,Female,18
+139,Yes,5,Rest,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Rest,Endurance/Hyrox,Rest,$51-$100,Creatine + full rest,5,Beginner,Male,18
+140,Yes,3-4,Endurance/Hyrox,Endurance/Hyrox,Endurance/Hyrox,Rest,Weightlifting,Endurance/Hyrox,Rest,$200+,Massage gun & foam rolling,5,Advanced,Female,24
+141,Yes,3-4,Weightlifting,Endurance/Hyrox,Rest,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,Boxing,$200+,High-carb meal and 8 hours sleep,2,Beginner,Female,21
+142,Yes,3-4,Mixed/CrossFit,Boxing,Mixed/CrossFit,Mixed/CrossFit,Boxing,Weightlifting,Rest,$51-$100,Ice bath & mobility,4,Beginner,Male,24
+143,Yes,3-4,Boxing,Weightlifting,Weightlifting,Mixed/CrossFit,Mixed/CrossFit,Rest,Mixed/CrossFit,$51-$100,Massage gun & foam rolling,5,Beginner,Male,19
+144,Yes,5,Endurance/Hyrox,Mixed/CrossFit,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Rest,Endurance/Hyrox,$200+,Chocolate protein shake & stretching,5,Beginner,Male,22
+145,Yes,6+,Weightlifting,Endurance/Hyrox,Mixed/CrossFit,Weightlifting,Weightlifting,Mixed/CrossFit,Rest,$51-$100,Ice bath & mobility,4,Beginner,Male,18
+146,Yes,3-4,Mixed/CrossFit,Rest,Endurance/Hyrox,Boxing,Endurance/Hyrox,Boxing,Rest,$200+,High-carb meal and 8 hours sleep,2,Intermediate,Prefer not to say,18
+147,Yes,3-4,Weightlifting,Boxing,Boxing,Weightlifting,Rest,Mixed/CrossFit,Rest,$0-$50,High-carb meal and 8 hours sleep,4,Intermediate,Prefer not to say,22
+148,Yes,5,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Mixed/CrossFit,Weightlifting,Mixed/CrossFit,Rest,$0-$50,Ice bath & mobility,3,Advanced,Female,19
+149,Yes,5,Rest,Endurance/Hyrox,Mixed/CrossFit,Endurance/Hyrox,Rest,Mixed/CrossFit,Rest,$101-$200,Massage gun & foam rolling,5,Intermediate,Female,18
+150,Yes,1-2,Weightlifting,Mixed/CrossFit,Rest,Weightlifting,Boxing,Endurance/Hyrox,Endurance/Hyrox,$0-$50,Ice bath & mobility,2,Beginner,Male,18

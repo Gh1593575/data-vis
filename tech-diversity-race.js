@@ -31,7 +31,9 @@ function TechDiversityRace() {
 
     // Create a select DOM element.
     this.select = createSelect();
-    this.select.position(350, 40);
+    /* Start own code */
+    this.positionSelect(this.select, width - 220, 20);
+    /* End own code */
 
     // Fill the options with all company names.
     var companies = this.data.columns;
@@ -41,18 +43,55 @@ function TechDiversityRace() {
     }
   };
 
+  /* Start own code */
+  this.positionSelect = function(select, canvasX, canvasY) {
+    var canvasElt = document.querySelector('#app canvas');
+    if (canvasElt) {
+      var rect = canvasElt.getBoundingClientRect();
+      select.position(rect.left + window.scrollX + canvasX,
+                       rect.top + window.scrollY + canvasY);
+    } else {
+      select.position(canvasX, canvasY); // fallback
+    }
+  };
+  /* End own code */
+
   this.destroy = function() {
     this.select.remove();
+    /* Start own code */
+    this.pie.resetAnimation();
+    /* End own code */
   };
 
   // Create a new pie chart object.
   this.pie = new PieChart(width / 2, height / 2, width * 0.4);
+
+  /* Start own code */
+  this.drawTitle = function() {
+    var titleText = 'Tech Diversity: Race';
+
+    noStroke();
+    fill(255);
+    textAlign(LEFT, TOP);
+    textSize(24);
+    text(titleText, 20, 16);
+
+    var underlineY = 16 + 32;
+    stroke(255);
+    strokeWeight(3);
+    line(20, underlineY, 120, underlineY);
+  };
+  /* End own code */
 
   this.draw = function() {
     if (!this.loaded) {
       console.log('Data not yet loaded');
       return;
     }
+
+    /* Start own code */
+    this.drawTitle();
+    /* End own code */
 
     // Get the value of the company we're interested in from the
     // select item.
@@ -70,10 +109,9 @@ function TechDiversityRace() {
     // Colour to use for each category.
     var colours = ['blue', 'red', 'green', 'pink', 'purple', 'yellow'];
 
-    // Make a title.
-    var title = 'Employee diversity at ' + companyName;
-
     // Draw the pie chart!
-    this.pie.draw(col, labels, colours, title);
+    /* Start own code */
+    this.pie.draw(col, labels, colours, null);
+    /* End own code */
   };
 }

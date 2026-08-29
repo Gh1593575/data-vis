@@ -1,4 +1,3 @@
-
 // Global variable to store the gallery object. The gallery object is
 // a container for all the visualisations.
 var gallery;
@@ -18,10 +17,18 @@ function setup() {
   gallery.addVisual(new PayGapByJob2017());
   gallery.addVisual(new PayGapTimeSeries());
   gallery.addVisual(new ClimateChange());
+
+  /* Start own code */
+  gallery.addVisual(new WaffleVis());
+  gallery.addVisual(new BubbleVis());
+  /* End own code */
 }
 
 function draw() {
-  background(255);
+  /* Start own code */
+  background('#343640');
+  /* End own code */
+  
   if (gallery.selectedVisual != null) {
     gallery.selectedVisual.draw();
   }
