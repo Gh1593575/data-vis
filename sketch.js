@@ -21,6 +21,8 @@ function setup() {
   /* Start own code */
   gallery.addVisual(new WaffleVis());
   gallery.addVisual(new BubbleVis());
+  gallery.addVisual(new WorkoutHeatmap());
+  gallery.addVisual(new OccupationRadar());
   /* End own code */
 }
 
@@ -28,7 +30,7 @@ function draw() {
   /* Start own code */
   background('#343640');
   /* End own code */
-  
+
   if (gallery.selectedVisual != null) {
     gallery.selectedVisual.draw();
   }
