@@ -1,0 +1,11 @@
+club,goals_scored,goals_conceded,possession,pass_accuracy,shots_per_game,xG,clean_sheets,points
+Manchester City,96,45,64,88,16.2,89.4,21,91
+Arsenal,91,29,58,86,14.8,82.1,24,89
+Liverpool,86,41,57,84,15.1,78.6,19,82
+Aston Villa,76,61,51,80,13.4,70.2,14,68
+Tottenham,74,61,53,81,13.8,68.7,13,66
+Chelsea,77,63,54,83,14.1,71.3,12,63
+Newcastle,85,62,49,79,13.2,72.8,16,60
+Manchester Utd,57,69,52,82,12.6,58.4,11,60
+West Ham,60,74,47,77,11.8,57.9,10,52
+Brighton,55,62,55,84,12.9,61.2,11,48
