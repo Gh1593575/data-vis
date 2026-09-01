@@ -73,6 +73,16 @@ function OccupationRadar() {
     }
   };
 
+  // Reposition all three dropdowns to stay pinned to the right edge of
+  // the canvas. Called every draw frame so they track the canvas during
+  // the sidebar slide-in/out transition.
+  this.repositionSelects = function () {
+    var selectYs = [20, 56, 92];
+    for (var s = 0; s < this.selects.length; s++) {
+      this.positionSelect(this.selects[s], width - 218, selectYs[s]);
+    }
+  };
+
   this.getFraction = function (club, axisIndex) {
     var key    = this.axisKeys[axisIndex];
     var domain = this.axisDomains[axisIndex];
@@ -174,6 +184,10 @@ function OccupationRadar() {
     }
 
     if (this.selects.length === 0) this.setup();
+
+    // Keep dropdowns pinned to the canvas right edge on every frame so
+    // they follow correctly when the sidebar slides in or out.
+    this.repositionSelects();
 
     if (this.animStart === null) this.animStart = millis();
     var elapsed  = millis() - this.animStart;
