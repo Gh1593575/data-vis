@@ -42,9 +42,40 @@
 </head>
 
 <body>
-  <div id="app" class="container">
+
+  <!-- Left sidebar nav -->
+  <nav id="sidebar">
+    <div id="sidebar-header">
+      <span id="sidebar-title">Visualisations</span>
+      <button id="sidebar-toggle" title="Collapse sidebar" aria-label="Toggle sidebar">&#10094;</button>
+    </div>
     <ul id="visuals-menu"></ul>
-  </div>
+  </nav>
+
+  <!-- Floating open button (visible only when sidebar is collapsed) -->
+  <button id="sidebar-open" title="Open menu" aria-label="Open sidebar">&#10095;</button>
+
+  <!-- Canvas wrapper -->
+  <div id="app" class="container"></div>
+
+  <script>
+    var toggle  = document.getElementById('sidebar-toggle');
+    var openBtn = document.getElementById('sidebar-open');
+    var sidebar = document.getElementById('sidebar');
+
+    function collapse() {
+      sidebar.classList.add('collapsed');
+      openBtn.classList.add('visible');
+    }
+    function expand() {
+      sidebar.classList.remove('collapsed');
+      openBtn.classList.remove('visible');
+    }
+
+    toggle.addEventListener('click', collapse);
+    openBtn.addEventListener('click', expand);
+  </script>
+
 </body>
 
 </html>
