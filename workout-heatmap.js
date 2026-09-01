@@ -1,207 +1,211 @@
 /* Start own code */
-/* New visualisation: a 2D matrix heatmap (training category x day of
-   week) built from the same workout survey data used by the waffle
-   chart, but presented as a genuinely different chart type — a
-   colour-encoded grid rather than a grid-of-squares-per-day. */
+/* Visualisation: Genre Popularity Heatmap
+   Rows    = music genres  (from the first column of the CSV)
+   Columns = countries     (from the header row of the CSV)
+   Values  = popularity score 0-100 */
 function WorkoutHeatmap() {
-  this.name = 'Workout Heatmap';
-  this.id = 'workout-heatmap';
+  this.name  = 'Genre Popularity Heatmap';
+  this.id    = 'workout-heatmap';
   this.loaded = false;
 
-  this.categories = ["Weightlifting", "Mixed/CrossFit", "Endurance/Hyrox", "Boxing", "Rest"];
-  this.days = [
-    { field: "mon_training", label: "Mon" },
-    { field: "tue_training", label: "Tue" },
-    { field: "wed_training", label: "Wed" },
-    { field: "thu_training", label: "Thu" },
-    { field: "fri_training", label: "Fri" },
-    { field: "sat_training", label: "Sat" },
-    { field: "sun_training", label: "Sun" }
-  ];
+  // Will be populated after the CSV is parsed.
+  this.genres    = [];   // row labels  (e.g. "Pop", "Rock", …)
+  this.countries = [];   // col labels  (e.g. "UK", "US", …)
+  this.matrix    = [];   // 2-D array of numbers [genre][country]
+  this.maxScore  = 100;  // scores are already 0-100, so cap is known
 
   this.layout = {
-    gridLeft: 160,
-    gridTop: 110,
-    cellW: 108,
-    cellH: 50,
+    gridLeft: 150,
+    gridTop:  110,
+    cellW:    90,
+    cellH:    46,
   };
 
-  // Entrance animation state, same pattern used elsewhere in the app.
-  this.animStart = null;
+  // Entrance animation — same pattern used elsewhere in the gallery.
+  this.animStart    = null;
   this.animDuration = 900;
 
-  this.resetAnimation = function() {
-    this.animStart = null;
-  };
+  this.resetAnimation = function() { this.animStart = null; };
 
-  this.easeOutCubic = function(t) {
-    return 1 - pow(1 - t, 3);
-  };
+  this.easeOutCubic = function(t) { return 1 - pow(1 - t, 3); };
 
+  // ── preload ────────────────────────────────────────────────────────────────
   this.preload = function() {
     var self = this;
     this.data = loadTable(
-      './data/workout-survey/Survey_Dataset_Structured.csv', 'csv', 'header',
-      function(table) {
-        self.loaded = true;
-      });
+      './data/genre-popularity/genre-popularity.csv',
+      'csv', 'header',
+      function() { self.loaded = true; }
+    );
   };
 
+  // ── setup ──────────────────────────────────────────────────────────────────
   this.setup = function() {
     textSize(13);
 
-    // Build the category x day matrix of counts.
-    this.matrix = [];
-    this.maxCount = 0;
-    var totalRespondents = this.data.getRowCount();
+    // Clear arrays so re-entering this visualisation doesn't double-push.
+    this.genres    = [];
+    this.countries = [];
+    this.matrix    = [];
 
-    for (var r = 0; r < this.categories.length; r++) {
-      var row = [];
-      for (var c = 0; c < this.days.length; c++) {
-        var column = this.data.getColumn(this.days[c].field);
-        var count = 0;
-        for (var i = 0; i < column.length; i++) {
-          if (column[i] === this.categories[r]) count++;
-        }
-        row.push(count);
-        this.maxCount = max(this.maxCount, count);
+    // Country names come from the header (all columns except the first "genre")
+    var columns = this.data.columns;    // array of all header strings
+    this.countries = columns.slice(1);  // drop "genre" column name
+
+    // Cell width — computed so all columns fit inside the canvas with a small
+    // right margin regardless of how many countries the CSV contains.
+    var rightMargin = 14;
+    this.layout.cellW = floor(
+      (width - this.layout.gridLeft - rightMargin) / this.countries.length
+    );
+
+    // Build the matrix row-by-row.
+    var rowCount = this.data.getRowCount();
+    for (var r = 0; r < rowCount; r++) {
+      var row = this.data.getRow(r);
+      this.genres.push(row.getString('genre'));
+
+      var vals = [];
+      for (var c = 0; c < this.countries.length; c++) {
+        vals.push(row.getNum(this.countries[c]));
       }
-      this.matrix.push(row);
+      this.matrix.push(vals);
     }
-    this.totalRespondents = totalRespondents;
   };
 
-  this.destroy = function() {
-    this.resetAnimation();
-  };
+  this.destroy = function() { this.resetAnimation(); };
 
-  // Sequential colour scale (dark -> the app's purple accent),
-  // matching the palette already used elsewhere in the gallery.
+  // ── colour scale ───────────────────────────────────────────────────────────
+  // Cold (low) → app's purple accent (high)
   this.intensityToColour = function(fraction) {
-    var lowColour = color(52, 54, 64);   // matches canvas background tone
-    var highColour = color(156, 93, 240); // app's purple accent
+    var lowColour  = color(52, 54, 64);    // matches canvas background tone
+    var highColour = color(156, 93, 240);  // app's purple accent
     return lerpColor(lowColour, highColour, fraction);
   };
 
+  // ── draw ───────────────────────────────────────────────────────────────────
   this.draw = function() {
-    if (!this.loaded) {
-      console.log('Data not yet loaded');
-      return;
-    }
+    if (!this.loaded) { return; }
 
-    if (this.animStart === null) {
-      this.animStart = millis();
-    }
-    var elapsed = millis() - this.animStart;
+    if (this.animStart === null) { this.animStart = millis(); }
+    var elapsed  = millis() - this.animStart;
     var progress = constrain(elapsed / this.animDuration, 0, 1);
-    var eased = this.easeOutCubic(progress);
+    var eased    = this.easeOutCubic(progress);
 
+    // Title
     noStroke();
     fill(255);
     textAlign(LEFT, TOP);
     textSize(24);
-    text('Workout Heatmap', 20, 16);
+    text('Genre Popularity Heatmap', 20, 16);
 
     stroke(255);
     strokeWeight(3);
-    line(20, 48, 120, 48);
+    line(20, 48, 180, 48);
 
-    // Column headers (days).
+    // Subtitle
     noStroke();
-    fill(255);
-    textAlign(CENTER, CENTER);
-    textSize(14);
-    for (var c = 0; c < this.days.length; c++) {
-      var x = this.layout.gridLeft + c * this.layout.cellW + this.layout.cellW / 2;
-      text(this.days[c].label, x, this.layout.gridTop - 20);
+    fill(200);
+    textSize(13);
+    textAlign(LEFT, TOP);
+    text('Music genre popularity scores (0–100) by country', 20, 58);
+
+    // Column headers (countries) — rotated 40° so they fit neatly.
+    for (var c = 0; c < this.countries.length; c++) {
+      var cx = this.layout.gridLeft + c * this.layout.cellW + this.layout.cellW / 2;
+      var cy = this.layout.gridTop - 14;
+      push();
+      translate(cx, cy);
+      rotate(-PI / 4.5);
+      noStroke();
+      fill(255);
+      textAlign(LEFT, CENTER);
+      textSize(12);
+      text(this.countries[c], 0, 0);
+      pop();
     }
 
     var hoveredCell = null;
 
-    // Grid cells.
-    for (var r = 0; r < this.categories.length; r++) {
-      var y = this.layout.gridTop + r * this.layout.cellH;
+    // Grid cells
+    for (var r = 0; r < this.genres.length; r++) {
+      var gy = this.layout.gridTop + r * this.layout.cellH;
 
-      // Row label.
+      // Row label (genre)
       noStroke();
       fill(255);
       textAlign(RIGHT, CENTER);
       textSize(13);
-      text(this.categories[r], this.layout.gridLeft - 14, y + this.layout.cellH / 2);
+      text(this.genres[r], this.layout.gridLeft - 10, gy + this.layout.cellH / 2);
 
-      for (var c = 0; c < this.days.length; c++) {
-        var x = this.layout.gridLeft + c * this.layout.cellW;
-        var count = this.matrix[r][c];
-        var fraction = this.maxCount > 0 ? count / this.maxCount : 0;
+      for (var c = 0; c < this.countries.length; c++) {
+        var gx      = this.layout.gridLeft + c * this.layout.cellW;
+        var score   = this.matrix[r][c];
+        var fraction = score / this.maxScore;
 
-        var isHovered = mouseX > x && mouseX < x + this.layout.cellW - 4 &&
-                         mouseY > y && mouseY < y + this.layout.cellH - 4;
-        if (isHovered) {
-          hoveredCell = { row: r, col: c, count: count };
-        }
+        var isHovered = mouseX > gx && mouseX < gx + this.layout.cellW - 4 &&
+                        mouseY > gy && mouseY < gy + this.layout.cellH - 4;
+        if (isHovered) hoveredCell = { row: r, col: c, score: score };
 
+        // Fill cell
         noStroke();
         fill(this.intensityToColour(fraction * eased));
-        rect(x, y, this.layout.cellW - 4, this.layout.cellH - 4, 4);
+        rect(gx, gy, this.layout.cellW - 4, this.layout.cellH - 4, 4);
 
+        // Hover outline
         if (isHovered) {
           noFill();
           stroke(255);
           strokeWeight(2);
-          rect(x, y, this.layout.cellW - 4, this.layout.cellH - 4, 4);
+          rect(gx, gy, this.layout.cellW - 4, this.layout.cellH - 4, 4);
         }
 
-        // Show the count directly in the cell once large enough to
-        // read, so the exact numbers are visible without hovering.
+        // Score label inside the cell
         noStroke();
-        fill(255);
+        fill(fraction * eased > 0.5 ? 255 : 180);
         textAlign(CENTER, CENTER);
-        textSize(12);
-        text(count, x + (this.layout.cellW - 4) / 2, y + (this.layout.cellH - 4) / 2);
+        textSize(11);
+        text(score, gx + (this.layout.cellW - 4) / 2, gy + (this.layout.cellH - 4) / 2);
       }
     }
 
     this.drawLegend(eased);
 
-    if (hoveredCell) {
-      this.drawTooltip(hoveredCell);
-    }
+    if (hoveredCell) this.drawTooltip(hoveredCell);
   };
 
-  // A small horizontal colour-intensity scale bar, so the mapping from
-  // colour to count is explained rather than left implicit.
+  // ── legend ─────────────────────────────────────────────────────────────────
   this.drawLegend = function(eased) {
     var legendX = this.layout.gridLeft;
-    var legendY = this.layout.gridTop + this.categories.length * this.layout.cellH + 30;
-    var legendW = 300;
-    var legendH = 14;
+    var legendY = this.layout.gridTop + this.genres.length * this.layout.cellH + 28;
+    var legendW = 260;
+    var legendH = 12;
 
     for (var i = 0; i < legendW; i++) {
-      var fraction = i / legendW;
-      stroke(this.intensityToColour(fraction * eased));
+      stroke(this.intensityToColour((i / legendW) * eased));
       line(legendX + i, legendY, legendX + i, legendY + legendH);
     }
 
     noStroke();
     fill(255);
-    textAlign(LEFT, TOP);
     textSize(12);
-    text('0', legendX, legendY + legendH + 6);
+    textAlign(LEFT, TOP);
+    text('0', legendX, legendY + legendH + 5);
     textAlign(RIGHT, TOP);
-    text(this.maxCount + ' respondents', legendX + legendW, legendY + legendH + 6);
+    text('100  (popularity score)', legendX + legendW, legendY + legendH + 5);
   };
 
-  this.drawTooltip = function(hoveredCell) {
-    var category = this.categories[hoveredCell.row];
-    var day = this.days[hoveredCell.col].label;
-    var pct = ((hoveredCell.count / this.totalRespondents) * 100).toFixed(1);
-    var label = category + ' on ' + day + ':  ' + hoveredCell.count + ' (' + pct + '%)';
+  // ── tooltip ────────────────────────────────────────────────────────────────
+  this.drawTooltip = function(cell) {
+    var genre   = this.genres[cell.row];
+    var country = this.countries[cell.col];
+    var label   = genre + ' in ' + country + ':  ' + cell.score + ' / 100';
 
     push();
     textSize(13);
     var tWidth = textWidth(label);
-    var boxW = tWidth + 20;
-    var boxH = 28;
+    var boxW   = tWidth + 20;
+    var boxH   = 28;
     var tx = constrain(mouseX + 14, 10, width - boxW - 10);
     var ty = constrain(mouseY - boxH - 12, 10, height - boxH - 10);
 
