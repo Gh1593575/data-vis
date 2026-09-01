@@ -9,6 +9,7 @@ function OccupationRadar() {
   this.loaded = false;
 
   this.select = null;
+  this.clubs = [];
 
   // The eight axes plotted around the radar, matching the CSV columns.
   this.axisKeys = ['goals_scored', 'goals_conceded', 'possession',
@@ -19,6 +20,21 @@ function OccupationRadar() {
   // goals_conceded is "better when lower" — we invert its fraction
   // so a club that concedes fewer goals scores higher on that axis.
   this.invertAxis = [false, true, false, false, false, false, false, false];
+
+  // All axes use a 0–100 domain so the concentric rings always
+  // correspond to literal values 20, 40, 60, 80, 100. This means
+  // a data point whose raw value is 19 (e.g. clean sheets) plots
+  // just inside the innermost "20" ring, and so on for every axis.
+  this.axisDomains = [
+    { min: 0, max: 100 },  // goals_scored
+    { min: 0, max: 100 },  // goals_conceded  (inverted: fewer = further out)
+    { min: 0, max: 100 },  // possession %
+    { min: 0, max: 100 },  // pass_accuracy %
+    { min: 0, max: 100 },  // shots_per_game
+    { min: 0, max: 100 },  // xG
+    { min: 0, max: 100 },  // clean_sheets
+    { min: 0, max: 100 }   // points
+  ];
 
   this.animStart = null;
   this.animDuration = 900;
@@ -34,6 +50,8 @@ function OccupationRadar() {
   };
 
   this.setup = function () {
+    if (!this.loaded) return;
+
     textSize(13);
 
     // Parse every row into a club object.
@@ -46,10 +64,9 @@ function OccupationRadar() {
       this.clubs.push(club);
     }
 
-    // Pre-compute min/max per axis for normalisation.
-    this.axisDomains = [];
-    for (var k = 0; k < this.axisKeys.length; k++) {
-      this.axisDomains.push(this.getDomain(this.axisKeys[k]));
+    if (this.select) {
+      this.select.remove();
+      this.select = null;
     }
 
     this.select = createSelect();
@@ -57,6 +74,11 @@ function OccupationRadar() {
     for (var i = 0; i < this.clubs.length; i++) {
       this.select.option(this.clubs[i].name);
     }
+
+    var self = this;
+    this.select.changed(function () {
+      self.resetAnimation();
+    });
 
     // Shift centre left so axis labels have room on the right side.
     this.center = { x: width / 2 - 20, y: height / 2 + 18 };
@@ -94,8 +116,8 @@ function OccupationRadar() {
     var key = this.axisKeys[axisIndex];
     var domain = this.axisDomains[axisIndex];
     if (domain.max === domain.min) return 0.5;
-    var t = map(club[key], domain.min, domain.max, 0.08, 1);
-    return this.invertAxis[axisIndex] ? 1.08 - t : t;
+    var t = constrain(map(club[key], domain.min, domain.max, 0, 1), 0, 1);
+    return this.invertAxis[axisIndex] ? 1 - t : t;
   };
 
   this.axisAngle = function (index) {
@@ -103,7 +125,18 @@ function OccupationRadar() {
   };
 
   this.draw = function () {
-    if (!this.loaded) { console.log('Data not yet loaded'); return; }
+    if (!this.loaded) {
+      noStroke();
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(16);
+      text('Loading Premier League Data...', width / 2, height / 2);
+      return;
+    }
+
+    if (!this.select || !this.clubs || this.clubs.length === 0) {
+      this.setup();
+    }
 
     if (this.animStart === null) this.animStart = millis();
     var elapsed = millis() - this.animStart;
@@ -120,13 +153,18 @@ function OccupationRadar() {
     this.drawGrid();
 
     // Find selected club
-    var selectedName = this.select.value();
+    var selectedName = this.select ? this.select.value() : null;
     var selectedClub = null;
-    for (var i = 0; i < this.clubs.length; i++) {
-      if (this.clubs[i].name === selectedName) {
-        selectedClub = this.clubs[i];
-        break;
+    if (this.clubs) {
+      for (var i = 0; i < this.clubs.length; i++) {
+        if (this.clubs[i].name === selectedName) {
+          selectedClub = this.clubs[i];
+          break;
+        }
       }
+    }
+    if (!selectedClub && this.clubs && this.clubs.length > 0) {
+      selectedClub = this.clubs[0];
     }
     if (!selectedClub) return;
 
@@ -150,7 +188,7 @@ function OccupationRadar() {
       endShape();
     }
 
-    // Spokes + axis labels
+    // Spokes + axis labels + per-ring value labels on the top spoke
     for (var i = 0; i < n; i++) {
       var a = this.axisAngle(i);
       var x2 = this.center.x + this.radius * cos(a);
@@ -163,6 +201,23 @@ function OccupationRadar() {
       var lx = this.center.x + (this.radius + 26) * cos(a);
       var ly = this.center.y + (this.radius + 26) * sin(a);
       text(this.axisLabels[i], lx, ly);
+    }
+
+    // Draw the real value that each ring corresponds to along the
+    // first axis (top spoke), so the rings read as actual numbers
+    // rather than arbitrary percentages.
+    var topAxis = 0; // index 0 = goals_scored, sits at the top spoke
+    var topAngle = this.axisAngle(topAxis);
+    for (var l = 0; l < levels.length; l++) {
+      var domain = this.axisDomains[topAxis];
+      var ringValue = lerp(domain.min, domain.max, levels[l]);
+      var rx = this.center.x + this.radius * levels[l] * cos(topAngle);
+      var ry = this.center.y + this.radius * levels[l] * sin(topAngle);
+      noStroke();
+      fill(130);
+      textAlign(CENTER, CENTER);
+      textSize(9);
+      text(nf(ringValue, 0, 0), rx - 10, ry);
     }
   };
 
@@ -204,9 +259,24 @@ function OccupationRadar() {
     var units = ['', '', '%', '%', '', '', '', ' pts'];
 
     for (var i = 0; i < this.lastPoints.length; i++) {
-      if (dist(mouseX, mouseY, this.lastPoints[i].x, this.lastPoints[i].y) < 10) {
+      var pt = this.lastPoints[i];
+      if (dist(mouseX, mouseY, pt.x, pt.y) < 10) {
+        // Highlight hovered point
+        push();
+        noFill();
+        stroke(255);
+        strokeWeight(2);
+        ellipse(pt.x, pt.y, 12, 12);
+        pop();
+
         var value = club[this.axisKeys[i]];
-        var label = this.axisLabels[i] + ':  ' + value.toFixed(1) + units[i];
+        var domain = this.axisDomains[i];
+        // Show raw value AND the axis range so the user understands
+        // why two nearby dots can have very different raw numbers —
+        // each axis is normalised independently against its own
+        // min/max across all clubs in the dataset.
+        var label = this.axisLabels[i] + ':  ' + value.toFixed(1) + units[i] +
+          '   (range ' + domain.min.toFixed(1) + ' – ' + domain.max.toFixed(1) + units[i] + ')';
 
         push();
         textSize(13);
