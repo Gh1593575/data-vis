@@ -15,11 +15,17 @@ function WorkoutHeatmap() {
   this.maxScore  = 100;  // scores are already 0-100, so cap is known
 
   this.layout = {
-    gridLeft: 150,
-    gridTop:  110,
-    cellW:    90,
-    cellH:    46,
+    gridLeft: 160,   // recomputed in setup() to centre horizontally
+    gridTop:  110,   // title (80px) + rotated-header row (30px)
+    cellW:    82,    // recomputed in setup() based on canvas width
+    cellH:    38,    // recomputed in setup() based on canvas height
   };
+
+  // Padding constants — give the grid visible breathing room on all sides.
+  this.PAD_LABEL   = 130;  // pixels reserved left of cells for genre labels
+  this.PAD_H       = 30;   // horizontal padding left & right of the full block
+  this.PAD_V_BOT   = 20;   // vertical padding below the legend
+  this.LEGEND_H    = 50;   // height needed for legend bar + text
 
   // Entrance animation — same pattern used elsewhere in the gallery.
   this.animStart    = null;
@@ -52,12 +58,15 @@ function WorkoutHeatmap() {
     var columns = this.data.columns;    // array of all header strings
     this.countries = columns.slice(1);  // drop "genre" column name
 
-    // Cell width — computed so all columns fit inside the canvas with a small
-    // right margin regardless of how many countries the CSV contains.
-    var rightMargin = 14;
-    this.layout.cellW = floor(
-      (width - this.layout.gridLeft - rightMargin) / this.countries.length
-    );
+    // ── Dynamic layout ─────────────────────────────────────────────────────
+    // Horizontal: centre the cell grid between left and right padding.
+    var availW = width - this.PAD_H - this.PAD_LABEL - this.PAD_H;
+    this.layout.cellW    = floor(availW / this.countries.length);
+    this.layout.gridLeft = this.PAD_H + this.PAD_LABEL;
+
+    // Vertical: fit rows into the space between the header and bottom padding.
+    // (Computed after the data loop so rowCount is known.)
+    var availH = height - this.layout.gridTop - this.LEGEND_H - this.PAD_V_BOT;
 
     // Build the matrix row-by-row.
     var rowCount = this.data.getRowCount();
@@ -71,6 +80,9 @@ function WorkoutHeatmap() {
       }
       this.matrix.push(vals);
     }
+
+    // Now rowCount is correct — compute cellH.
+    this.layout.cellH = floor(availH / rowCount);
   };
 
   this.destroy = function() { this.resetAnimation(); };
