@@ -124,6 +124,13 @@ function ClimateChange() {
       return;
     }
 
+    /* Start own code */
+    // Keep both sliders pinned to the canvas right edge every frame
+    // so they follow correctly when the sidebar slides in or out.
+    this.positionSlider(this.startSlider, width - 300, 20);
+    this.positionSlider(this.endSlider,   width - 150, 20);
+    /* End own code */
+
     // Prevent slider ranges overlapping.
     if (this.startSlider.value() >= this.endSlider.value()) {
       this.startSlider.value(this.endSlider.value() - 1);

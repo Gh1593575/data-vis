@@ -26,9 +26,14 @@ function BubbleVis() {
     this.maxAmt = 0;
 
     this.select = createSelect();
-    this.positionSelect(this.select, width - 220, 20);
-    this.select.style('font-size', '16px');
-    this.select.style('padding', '5px');
+    this.positionSelect(this.select, width - 218, 20);
+    this.select.style('font-size',        '12px');
+    this.select.style('width',            '200px');
+    this.select.style('padding',          '3px 8px');
+    this.select.style('background-color', '#2c2f36');
+    this.select.style('color',            '#ffffff');
+    this.select.style('border',           '1px solid #9c5df0');
+    this.select.style('border-radius',    '4px');
 
     var rows = this.data.getRows();
     var numColumns = this.data.getColumnCount();
@@ -108,7 +113,7 @@ function BubbleVis() {
     }
 
     // Keep the dropdown pinned to the canvas right edge every frame.
-    if (this.select) this.positionSelect(this.select, width - 220, 20);
+    if (this.select) this.positionSelect(this.select, width - 218, 20);
     noStroke();
     fill(255);
     textSize(24);
