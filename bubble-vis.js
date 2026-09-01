@@ -26,15 +26,7 @@ function BubbleVis() {
     this.maxAmt = 0;
 
     this.select = createSelect();
-
-    var canvasElt = document.querySelector('#app canvas');
-    if (canvasElt) {
-      var rect = canvasElt.getBoundingClientRect();
-      this.select.position(rect.left + window.scrollX + (width - 220),
-                            rect.top + window.scrollY + 20);
-    } else {
-      this.select.position(width - 220, 20); 
-    }
+    this.positionSelect(this.select, width - 220, 20);
     this.select.style('font-size', '16px');
     this.select.style('padding', '5px');
 
@@ -88,6 +80,17 @@ function BubbleVis() {
     }
   };
 
+  this.positionSelect = function (sel, canvasX, canvasY) {
+    var canvasElt = document.querySelector('#app canvas');
+    if (canvasElt) {
+      var rect = canvasElt.getBoundingClientRect();
+      sel.position(rect.left + window.scrollX + canvasX,
+                   rect.top  + window.scrollY + canvasY);
+    } else {
+      sel.position(canvasX, canvasY);
+    }
+  };
+
   this.destroy = function () {
     if (this.select) {
       this.select.remove();
@@ -104,6 +107,8 @@ function BubbleVis() {
       return;
     }
 
+    // Keep the dropdown pinned to the canvas right edge every frame.
+    if (this.select) this.positionSelect(this.select, width - 220, 20);
     noStroke();
     fill(255);
     textSize(24);

@@ -89,6 +89,8 @@ function TechDiversityRace() {
       return;
     }
 
+    // Keep the dropdown pinned to the canvas right edge every frame.
+    if (this.select) this.positionSelect(this.select, width - 220, 20);
     /* Start own code */
     this.drawTitle();
     /* End own code */

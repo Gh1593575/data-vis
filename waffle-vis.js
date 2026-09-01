@@ -119,6 +119,8 @@ function WaffleVis() {
       this.isInitialized = true;
     }
 
+    // Keep the dropdown pinned to the canvas right edge every frame.
+    if (this.sortMenu) this.alignDropdown(this.sortMenu, width - 220, 20);
     fill(255);
     textAlign(LEFT, TOP);
     textSize(24);
