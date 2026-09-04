@@ -43,20 +43,24 @@
 
 <body>
 
-  <!-- Left sidebar nav -->
-  <nav id="sidebar">
-    <div id="sidebar-header">
-      <span id="sidebar-title">Visualisations</span>
-      <button id="sidebar-toggle" title="Collapse sidebar" aria-label="Toggle sidebar">&#10094;</button>
-    </div>
-    <ul id="visuals-menu"></ul>
-  </nav>
+  <div id="layout">
 
-  <!-- Floating open button (visible only when sidebar is collapsed) -->
-  <button id="sidebar-open" title="Open menu" aria-label="Open sidebar">&#10095;</button>
+    <!-- Left sidebar nav -->
+    <nav id="sidebar">
+      <div id="sidebar-header">
+        <span id="sidebar-title">Visualisations</span>
+        <button id="sidebar-toggle" title="Collapse sidebar" aria-label="Toggle sidebar">&#10094;</button>
+      </div>
+      <ul id="visuals-menu"></ul>
+    </nav>
 
-  <!-- Canvas wrapper -->
-  <div id="app" class="container"></div>
+    <!-- Floating open button (visible only when sidebar is collapsed) -->
+    <button id="sidebar-open" title="Open menu" aria-label="Open sidebar">&#10095;</button>
+
+    <!-- Canvas wrapper -->
+    <div id="app" class="container"></div>
+
+  </div>
 
   <script>
     var toggle  = document.getElementById('sidebar-toggle');

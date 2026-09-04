@@ -4,55 +4,55 @@
    Columns = countries     (from the header row of the CSV)
    Values  = popularity score 0-100 */
 function WorkoutHeatmap() {
-  this.name  = 'Genre Popularity Heatmap';
-  this.id    = 'workout-heatmap';
+  this.name = 'Genre Popularity';
+  this.id = 'workout-heatmap';
   this.loaded = false;
 
   // Will be populated after the CSV is parsed.
-  this.genres    = [];   // row labels  (e.g. "Pop", "Rock", …)
+  this.genres = [];   // row labels  (e.g. "Pop", "Rock", …)
   this.countries = [];   // col labels  (e.g. "UK", "US", …)
-  this.matrix    = [];   // 2-D array of numbers [genre][country]
-  this.maxScore  = 100;  // scores are already 0-100, so cap is known
+  this.matrix = [];   // 2-D array of numbers [genre][country]
+  this.maxScore = 100;  // scores are already 0-100, so cap is known
 
   this.layout = {
     gridLeft: 160,   // recomputed in setup() to centre horizontally
-    gridTop:  110,   // title (80px) + rotated-header row (30px)
-    cellW:    82,    // recomputed in setup() based on canvas width
-    cellH:    38,    // recomputed in setup() based on canvas height
+    gridTop: 110,   // title (80px) + rotated-header row (30px)
+    cellW: 82,    // recomputed in setup() based on canvas width
+    cellH: 38,    // recomputed in setup() based on canvas height
   };
 
   // Padding constants — give the grid visible breathing room on all sides.
-  this.PAD_LABEL   = 130;  // pixels reserved left of cells for genre labels
-  this.PAD_H       = 30;   // horizontal padding left & right of the full block
-  this.PAD_V_BOT   = 20;   // vertical padding below the legend
-  this.LEGEND_H    = 50;   // height needed for legend bar + text
+  this.PAD_LABEL = 130;  // pixels reserved left of cells for genre labels
+  this.PAD_H = 30;   // horizontal padding left & right of the full block
+  this.PAD_V_BOT = 20;   // vertical padding below the legend
+  this.LEGEND_H = 50;   // height needed for legend bar + text
 
   // Entrance animation — same pattern used elsewhere in the gallery.
-  this.animStart    = null;
+  this.animStart = null;
   this.animDuration = 900;
 
-  this.resetAnimation = function() { this.animStart = null; };
+  this.resetAnimation = function () { this.animStart = null; };
 
-  this.easeOutCubic = function(t) { return 1 - pow(1 - t, 3); };
+  this.easeOutCubic = function (t) { return 1 - pow(1 - t, 3); };
 
   // ── preload ────────────────────────────────────────────────────────────────
-  this.preload = function() {
+  this.preload = function () {
     var self = this;
     this.data = loadTable(
       './data/genre-popularity/genre-popularity.csv',
       'csv', 'header',
-      function() { self.loaded = true; }
+      function () { self.loaded = true; }
     );
   };
 
   // ── setup ──────────────────────────────────────────────────────────────────
-  this.setup = function() {
+  this.setup = function () {
     textSize(13);
 
     // Clear arrays so re-entering this visualisation doesn't double-push.
-    this.genres    = [];
+    this.genres = [];
     this.countries = [];
-    this.matrix    = [];
+    this.matrix = [];
 
     // Country names come from the header (all columns except the first "genre")
     var columns = this.data.columns;    // array of all header strings
@@ -61,7 +61,7 @@ function WorkoutHeatmap() {
     // ── Dynamic layout ─────────────────────────────────────────────────────
     // Horizontal: centre the cell grid between left and right padding.
     var availW = width - this.PAD_H - this.PAD_LABEL - this.PAD_H;
-    this.layout.cellW    = floor(availW / this.countries.length);
+    this.layout.cellW = floor(availW / this.countries.length);
     this.layout.gridLeft = this.PAD_H + this.PAD_LABEL;
 
     // Vertical: fit rows into the space between the header and bottom padding.
@@ -85,31 +85,31 @@ function WorkoutHeatmap() {
     this.layout.cellH = floor(availH / rowCount);
   };
 
-  this.destroy = function() { this.resetAnimation(); };
+  this.destroy = function () { this.resetAnimation(); };
 
   // ── colour scale ───────────────────────────────────────────────────────────
   // Cold (low) → app's purple accent (high)
-  this.intensityToColour = function(fraction) {
-    var lowColour  = color(52, 54, 64);    // matches canvas background tone
+  this.intensityToColour = function (fraction) {
+    var lowColour = color(52, 54, 64);    // matches canvas background tone
     var highColour = color(156, 93, 240);  // app's purple accent
     return lerpColor(lowColour, highColour, fraction);
   };
 
   // ── draw ───────────────────────────────────────────────────────────────────
-  this.draw = function() {
+  this.draw = function () {
     if (!this.loaded) { return; }
 
     if (this.animStart === null) { this.animStart = millis(); }
-    var elapsed  = millis() - this.animStart;
+    var elapsed = millis() - this.animStart;
     var progress = constrain(elapsed / this.animDuration, 0, 1);
-    var eased    = this.easeOutCubic(progress);
+    var eased = this.easeOutCubic(progress);
 
     // Title
     noStroke();
     fill(255);
     textAlign(LEFT, TOP);
     textSize(24);
-    text('Genre Popularity Heatmap', 20, 16);
+    text('Genre Popularity', 20, 16);
 
     stroke(255);
     strokeWeight(3);
@@ -151,12 +151,12 @@ function WorkoutHeatmap() {
       text(this.genres[r], this.layout.gridLeft - 10, gy + this.layout.cellH / 2);
 
       for (var c = 0; c < this.countries.length; c++) {
-        var gx      = this.layout.gridLeft + c * this.layout.cellW;
-        var score   = this.matrix[r][c];
+        var gx = this.layout.gridLeft + c * this.layout.cellW;
+        var score = this.matrix[r][c];
         var fraction = score / this.maxScore;
 
         var isHovered = mouseX > gx && mouseX < gx + this.layout.cellW - 4 &&
-                        mouseY > gy && mouseY < gy + this.layout.cellH - 4;
+          mouseY > gy && mouseY < gy + this.layout.cellH - 4;
         if (isHovered) hoveredCell = { row: r, col: c, score: score };
 
         // Fill cell
@@ -187,7 +187,7 @@ function WorkoutHeatmap() {
   };
 
   // ── legend ─────────────────────────────────────────────────────────────────
-  this.drawLegend = function(eased) {
+  this.drawLegend = function (eased) {
     var legendX = this.layout.gridLeft;
     var legendY = this.layout.gridTop + this.genres.length * this.layout.cellH + 28;
     var legendW = 260;
@@ -208,16 +208,16 @@ function WorkoutHeatmap() {
   };
 
   // ── tooltip ────────────────────────────────────────────────────────────────
-  this.drawTooltip = function(cell) {
-    var genre   = this.genres[cell.row];
+  this.drawTooltip = function (cell) {
+    var genre = this.genres[cell.row];
     var country = this.countries[cell.col];
-    var label   = genre + ' in ' + country + ':  ' + cell.score + ' / 100';
+    var label = genre + ' in ' + country + ':  ' + cell.score + ' / 100';
 
     push();
     textSize(13);
     var tWidth = textWidth(label);
-    var boxW   = tWidth + 20;
-    var boxH   = 28;
+    var boxW = tWidth + 20;
+    var boxH = 28;
     var tx = constrain(mouseX + 14, 10, width - boxW - 10);
     var ty = constrain(mouseY - boxH - 12, 10, height - boxH - 10);
 
