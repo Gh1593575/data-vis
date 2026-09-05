@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case study 2: Data visualisation</title>
+
+  <!-- Libraries -->
+  <script src="lib/p5.min.js"></script>
+  <script src="lib/p5.dom.min.js"></script>
+
+  <!-- Start own code -->
+  <link rel="stylesheet" href="style.css">
+  <!-- End own code -->
+
+  <!-- Main sketch file -->
+  <script src="sketch.js"></script>
+
+  <!-- Main visualisation files -->
+  <script src="tech-diversity-race.js"></script>
+  <script src="tech-diversity-gender.js"></script>
+  <script src="pay-gap-by-job-2017.js"></script>
+  <script src="pay-gap-1997-2017.js"></script>
+  <script src="climate-change.js"></script>
+
+  <!-- Add extra scripts below -->
+  <script src="helper-functions.js"></script>
+  <script src="gallery.js"></script>
+  <script src="pie-chart.js"></script>
+
+  <!-- Start own code -->
+  <script src="bubble-vis.js"></script>
+  <script src="bubble.js"></script>
+  <script src="waffle-vis.js"></script>
+  <script src="waffle.js"></script>
+  <script src="box.js"></script>
+  <script src="workout-heatmap.js"></script>
+  <script src="occupation-radar.js"></script>
+  <!-- End own code -->
+</head>
+
+<body>
+
+  <div id="layout">
+
+    <!-- Left sidebar nav -->
+    <nav id="sidebar">
+      <div id="sidebar-header">
+        <span id="sidebar-title">Visualisations</span>
+        <button id="sidebar-toggle" title="Collapse sidebar" aria-label="Toggle sidebar">&#10094;</button>
+      </div>
+      <ul id="visuals-menu">
+
+      </ul>
+    </nav>
+
+    <!-- Floating open button (visible only when sidebar is collapsed) -->
+    <button id="sidebar-open" title="Open menu" aria-label="Open sidebar">&#10095;</button>
+
+    <!-- Canvas wrapper -->
+    <div id="app" class="container"></div>
+
+
+
+  </div>
+
+  <script>
+    var toggle  = document.getElementById('sidebar-toggle');
+    var openBtn = document.getElementById('sidebar-open');
+    var sidebar = document.getElementById('sidebar');
+
+    function collapse() {
+      sidebar.classList.add('collapsed');
+      openBtn.classList.add('visible');
+    }
+    function expand() {
+      sidebar.classList.remove('collapsed');
+      openBtn.classList.remove('visible');
+    }
+
+    toggle.addEventListener('click', collapse);
+    openBtn.addEventListener('click', expand);
+  </script>
+
+
+</body>
+
+</html>

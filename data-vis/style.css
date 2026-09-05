@@ -1,0 +1,311 @@
+/* Start own code */
+/* ─── Google Font ────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ─── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1e2029;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+/* ─── Centred layout wrapper ─────────────────────────────────── */
+#layout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 576px;
+  gap: 20px;
+  position: relative;
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────── */
+#sidebar {
+  width: 200px;
+  min-width: 200px;
+  background: linear-gradient(180deg, #9c5df0 0%, #7b2fbe 45%, #5c1a9e 100%);
+  border-right: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.35s cubic-bezier(0.4,0,0.2,1),
+              min-width 0.35s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.3s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 10;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+
+/* Collapsed state */
+#sidebar.collapsed {
+  width: 0;
+  min-width: 0;
+  opacity: 0;
+  border-right: none;
+}
+
+/* ─── Sidebar header (brand bar) ─────────────────────────────── */
+#sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  height: 56px;
+  min-height: 56px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+#sidebar-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+/* Collapse ( ‹ ) button */
+#sidebar-toggle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+}
+#sidebar-toggle:hover {
+  background: rgba(255,255,255,0.28);
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* ─── Nav menu list ──────────────────────────────────────────── */
+#visuals-menu {
+  list-style: none;
+  margin: 0;
+  padding: 12px 10px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+#visuals-menu::-webkit-scrollbar { width: 4px; }
+#visuals-menu::-webkit-scrollbar-track { background: transparent; }
+#visuals-menu::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+}
+
+.menu-item {
+  padding: 10px 8px;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  display: block;
+  text-align: center;
+  transition: background 0.18s ease, color 0.18s ease;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.menu-item.hover,
+.menu-item:hover {
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+.menu-item.selected {
+  background: rgba(0,0,0,0.22);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Dashboard link — always at top, slightly brighter */
+.menu-item-dashboard {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 4px !important;
+}
+.menu-item-dashboard:hover {
+  background: rgba(255,255,255,0.2) !important;
+}
+
+/* Thin separator line between dashboard link and chart list */
+.menu-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 6px 14px 10px;
+  pointer-events: none;
+  list-style: none;
+}
+/* ─── Floating open ( › ) button ────────────────────────────── */
+#sidebar-open {
+  position: fixed;
+  top: 50vh;
+  left: 0;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg, #9c5df0, #7b2fbe, #5c1a9e);
+  border: none;
+  color: #fff;
+  width: 24px;
+  height: 52px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 0 10px 10px 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.2s, width 0.2s;
+  box-shadow: 3px 0 12px rgba(92,26,158,0.5);
+}
+#sidebar-open.visible { display: flex; }
+#sidebar-open:hover { opacity: 0.85; width: 28px; }
+
+/* ─── Canvas area ────────────────────────────────────────────── */
+.container {
+  width: 1024px;
+  height: 576px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+
+.p5Canvas {
+  border-radius: 20px;
+  display: block;
+}
+
+/* ─── Dropdown / Select (all charts) ────────────────────────── */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(135deg, rgba(156, 93, 240, 0.85), rgba(156, 93, 240, 0.55));
+  color: #ffffff;
+  border: 1.5px solid rgba(156, 93, 240, 0.7);
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  outline: none;
+  width: 160px;
+  height: 34px;
+  transition: border-color 0.2s ease;
+}
+
+select:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+select:active {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+select:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+select option {
+  background-color: #2e1a5e;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ─── Range Sliders (Climate Change) ────────────────────────── */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 120px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-image: linear-gradient(#9D4EDD, #9D4EDD);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  box-shadow: none;
+}
+
+/* Webkit (Chrome, Safari) thumb */
+input[type=range]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #9D4EDD;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  margin-top: -4px;
+  transition: transform 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Firefox thumb */
+input[type=range]::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+}
+
+input[type=range]::-moz-range-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: #9D4EDD;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #9D4EDD;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+}
+/* End own code */
